@@ -16,8 +16,14 @@ jobs:
         b: [3, 4]
 
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
       - uses: DeterminateSystems/nix-installer-action@main
+        with:
+          determinate: true
       - name: prefetch gron
         run: echo '{}' | nix run nixpkgs#gron
       - name: Dump general environment

@@ -14,7 +14,7 @@
     in {
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [ hello git openssl ];
-        a = 3;
+        a = 9999999;
       };
     };
 }
