@@ -1,12 +1,12 @@
 on:
   workflow_dispatch:
-  # pull_request:
+  pull_request:
 jobs:
   tests:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.1
-      - uses: DeterminateSystems/nix-installer-action@curl-data
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@hash-mismatch-summary
         with:
           determinate: true
-      - run: nix build -f ./hash-mismatch.nix
+      - run: nix build .#badHash .#fail
